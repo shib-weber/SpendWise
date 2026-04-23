@@ -1,5 +1,4 @@
-# Creating a specialized README with a simulated "UI" aesthetic using Markdown blocks and HTML styling
-readme_content = """# <p align="center">💳 SpendWise</p>
+<p align="center">💳 SpendWise</p>
 <p align="center"><i>Smart. Sleek. Secure. The ultimate personal finance companion.</i></p>
 
 <p align="center">
