@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+pydantic
+pydantic-settings
+python-dotenv
+cryptography
+fastapi-mail 
+python-jose[cryptography] 
+passlib[bcrypt]
+PyJWT
+pydantic[email]
