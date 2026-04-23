@@ -122,7 +122,7 @@ const Dashboard = ({ onLogout }) => {
         </div>
 
         {/* Accounts Grid - Horizontal scroll on very small screens, 2-3 columns elsewhere */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10">
           {accounts.map(acc => (
             <div key={acc.id} className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 hover:border-blue-200 transition-colors group relative">
               <button 
@@ -253,8 +253,8 @@ const Dashboard = ({ onLogout }) => {
         {/* Responsive Modals are usually handled within the Modal components via Tailwind, 
             but ensured the Create Account modal is responsive here */}
         {isAccountModalOpen && (
-          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 z-[100]">
-            <div className="bg-white rounded-t-[2.5rem] sm:rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl animate-in slide-in-from-bottom sm:zoom-in duration-300">
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-[100]">
+            <div className="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl animate-in zoom-in duration-200">
               <div className="w-12 h-1 bg-gray-200 rounded-full mx-auto mb-6 sm:hidden" />
               <h2 className="text-xl md:text-2xl font-bold mb-1">Create Account</h2>
               <p className="text-gray-400 text-sm mb-6">Where is this money stored?</p>

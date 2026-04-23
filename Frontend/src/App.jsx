@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import AnalyticsPage from './pages/Analytics'; // The wrapper we discussed
+import AnalyticsPage from './pages/Analytics'; 
+import SettingsPage from './pages/SettingsPage'
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -35,6 +36,12 @@ function App() {
         <Route path="/analytics" element={
           <ProtectedRoute>
             <AnalyticsPage />
+          </ProtectedRoute>
+        } />
+
+                <Route path="/settings" element={
+          <ProtectedRoute>
+            <SettingsPage />
           </ProtectedRoute>
         } />
       </Routes>
