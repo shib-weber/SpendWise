@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://spendwise-nmhf.onrender.com';
+const API_BASE_URL = 'https://spendwise-1-s5px.onrender.com';
 
 // Create an axios instance
 const API = axios.create({
