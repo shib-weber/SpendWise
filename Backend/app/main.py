@@ -81,13 +81,32 @@ otp_storage = {}
 # --- AUTH ROUTES ---
 
 @app.post("/auth/send-otp")
-def send_otp(email: str, background_tasks: BackgroundTasks):
-    otp = str(random.randint(100000, 999999))
-    otp_storage[email] = otp
-    background_tasks.add_task(send_email_otp, email, otp)
-    print(f"DEBUG: OTP for {email} is {otp}") 
-    return {"message": "OTP sent successfully"}
+def send_email_otp(recipient_email: str, otp: str):
+    message = MIMEMultipart()
+    message["From"] = SMTP_USERNAME
+    message["To"] = recipient_email
+    message["Subject"] = "Your Verification Code - Expense Manager"
 
+    body = f"Your login OTP is: {otp}"
+    message.attach(MIMEText(body, "plain"))
+
+    try:
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+            server.set_debuglevel(1)  # 👈 ADD THIS
+            server.starttls()
+            server.login(SMTP_USERNAME, SMTP_PASSWORD)
+
+            response = server.sendmail(
+                SMTP_USERNAME,
+                recipient_email,
+                message.as_string()
+            )
+
+            print("EMAIL RESPONSE:", response)
+
+    except Exception as e:
+        print("EMAIL ERROR:", str(e))
+        
 @app.post("/auth/verify")
 def verify_otp(email: str, otp: str, db: Session = Depends(database.get_db)):
     if otp_storage.get(email) != otp:
