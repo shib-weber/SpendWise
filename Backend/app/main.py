@@ -95,7 +95,7 @@ def send_otp(email: str, background_tasks: BackgroundTasks):
     otp_storage[email] = otp
     background_tasks.add_task(send_email_otp, email, otp)
     print(f"DEBUG: OTP for {email} is {otp}") 
-    return {"message": "OTP sent successfully"}
+    return {f"message": "{OTP} sent successfully"}
 @app.post("/auth/verify")
 def verify_otp(email: str, otp: str, db: Session = Depends(database.get_db)):
     if otp_storage.get(email) != otp:
